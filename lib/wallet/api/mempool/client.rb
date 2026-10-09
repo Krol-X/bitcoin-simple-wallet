@@ -1,4 +1,5 @@
 # frozen_string_literal: true
+# docs: https://mempool.space/ru/signet/docs/api/rest
 
 require_relative '../core/http_client'
 require_relative 'addresses'

@@ -18,11 +18,7 @@ module Wallet
         def initialize(network: :mainnet)
           super()
           @network = network
-          @gateway = GATEWAYS[network]
-        end
-
-        def request
-          super { |http| yield http, @gateway }
+          @gateway = GATEWAYS.fetch(network)
         end
       end
     end

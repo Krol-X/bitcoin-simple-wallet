@@ -13,11 +13,10 @@ class App
   def self.main
     Bitcoin.network = :signet
 
-    key = PrivateKey.new
+    key = Wallet::PrivateKey.new
 
-    client = Wallet::Api::Client.new(network: :signet, provider: Wallet::Api::Mempool)
-    # api = Wallet::Api.new(network: :signet)
-    # p api.address(key.to_address)
+    client = Wallet::Api::Client.new(network: :signet)
+    p client.get_address(key.to_address)
   end
 end
 

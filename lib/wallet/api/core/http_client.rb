@@ -21,14 +21,14 @@ module Wallet
       def request
         http = HTTP.timeout(connect: @timeout, read: @timeout)
         response = yield(http)
-        case response
-        in { status: 200..299, body: body }
-          JSON.parse(body.to_s)
-        in { status: 400 }
+        case response.status.code
+        in 200..299
+          JSON.parse(response.body.to_s)
+        in 400
           raise InvalidRequest, response.to_s
-        in { status: 404 }
+        in 404
           raise NotFound, response.to_s
-        in { status: 500..599 }
+        in 500..599
           raise ServerError, response.to_s
         else
           raise TransportError, response.to_s

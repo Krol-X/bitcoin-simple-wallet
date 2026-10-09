@@ -4,8 +4,8 @@ module Wallet
   module Api
     module Mempool
       module Addresses
-        def get_address
-          request { |http, gateway| http.get "#{gateway}/address/#{addr}" }
+        def get_address(addr)
+          request { |http| http.get "#{@gateway}/address/#{addr}" }
         end
       end
     end

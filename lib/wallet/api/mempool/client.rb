@@ -3,6 +3,7 @@
 
 require_relative '../core/http_client'
 require_relative 'addresses'
+require_relative 'transactions'
 
 module Wallet
   module Api

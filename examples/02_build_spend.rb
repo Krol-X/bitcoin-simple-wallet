@@ -194,13 +194,13 @@ puts "Все транзакции подписаны и проверены ло�
 puts "=" * 78
 
 require 'fileutils'
-FileUtils.mkdir_p(File.join(__dir__, '../build'))
-File.write(File.join(__dir__, '../build/spends.json'),
+FileUtils.mkdir_p(File.join(__dir__, '../stroage'))
+File.write(File.join(__dir__, '../stroage/spends.json'),
            JSON.pretty_generate('network' => 'signet', 'spends' => results))
 
 puts
-puts "Данные для независимой проверки сохранены в build/spends.json"
+puts "Данные для независимой проверки сохранены в stroage/spends.json"
 puts "Проверить: python3 test/crosscheck_embit.py"
 puts
 puts "Отправить в сеть можно, например, так (нужны монеты на входе):"
-puts "  curl -X POST -d \"$(jq -r '.spends[0].hex' build/spends.json)\" https://mempool.space/signet/api/tx"
+puts "  curl -X POST -d \"$(jq -r '.spends[0].hex' stroage/spends.json)\" https://mempool.space/signet/api/tx"

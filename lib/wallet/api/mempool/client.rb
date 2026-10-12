@@ -15,6 +15,7 @@ module Wallet
         }.freeze
 
         include Addresses
+        include Transactions
 
         def initialize(network: :mainnet)
           super()

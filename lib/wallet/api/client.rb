@@ -12,6 +12,10 @@ module Wallet
       end
 
       def get_address(...) = @provider.get_address(...)
+
+      def get_utxo(...) = @provider.get_utxo(...)
+
+      def broadcast(...) = @provider.broadcast(...)
     end
   end
 end

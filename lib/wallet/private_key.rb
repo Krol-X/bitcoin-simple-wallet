@@ -17,10 +17,6 @@ module Wallet
       save_key
     end
 
-    def to_address
-      Bitcoin.encode_segwit_address(0, @value.hash160)
-    end
-
     def save_key
       FileUtils.mkdir_p(File.dirname(@key_file))
       tmp = "#{@key_file}.tmp"

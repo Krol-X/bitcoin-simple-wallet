@@ -19,11 +19,21 @@ module Wallet
       private
 
       def request
+        body = perform_request { |http| yield(http) }
+        JSON.parse(body.to_s)
+      end
+
+      # Для эндпоинтов, отвечающих не JSON (например, Mempool POST /tx -> txid)
+      def request_raw
+        perform_request { |http| yield(http) }
+      end
+
+      def perform_request
         http = HTTP.timeout(connect: @timeout, read: @timeout)
         response = yield(http)
         case response.status.code
         in 200..299
-          JSON.parse(response.body.to_s)
+          response.body.to_s
         in 400
           raise InvalidRequest, response.to_s
         in 404

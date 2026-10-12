@@ -5,7 +5,7 @@ module Wallet
     module Mempool
       module Transactions
         def broadcast(tx_hex)
-          request { |http| http.post("#{@gateway}/tx", body: tx_hex) }
+          request_raw { |http| http.post("#{@gateway}/tx", body: tx_hex) }
         end
       end
     end

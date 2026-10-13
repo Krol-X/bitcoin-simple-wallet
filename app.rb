@@ -21,9 +21,12 @@ class App
     case ARGV[0]
     when 'balance', nil
       utxos = client.get_utxo(address)
-      balance = utxos.sum { |u| u['value'] }
+      balance = utxos.map(&:value).sum
+      address_info = client.get_address(address)
       puts "Адрес: #{address}"
       puts "Баланс: #{balance} sats (#{balance.to_f / 100_000_000} sBTC)"
+      puts "  подтверждено: #{address_info.confirmed_balance} sats"
+      puts "  в мемпуле:    #{address_info.unconfirmed_balance} sats"
 
     when 'send'
       to_addr = ARGV[1]

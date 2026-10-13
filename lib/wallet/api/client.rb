@@ -15,6 +15,8 @@ module Wallet
 
       def get_utxo(...) = @provider.get_utxo(...)
 
+      def get_tx(...) = @provider.get_tx(...)
+
       def broadcast(...) = @provider.broadcast(...)
     end
   end

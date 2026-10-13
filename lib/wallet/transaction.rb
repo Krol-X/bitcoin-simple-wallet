@@ -29,10 +29,10 @@ module Wallet
 
     def build_and_sign!
       # 1. Фильтруем UTXO (берем только подтвержденные)
-      confirmed_utxos = @utxos.select { |u| u.dig('status', 'confirmed') }
+      confirmed_utxos = @utxos.select(&:confirmed?)
 
       # 2. Набираем входы (пока просто берем все, как советует подсказка)
-      total_input = confirmed_utxos.sum { |u| u['value'] }
+      total_input = confirmed_utxos.sum(&:value)
 
       raise "Недостаточно средств для отправки" if total_input < @amount
 
@@ -50,9 +50,9 @@ module Wallet
 
         confirmed_utxos.each do |utxo|
           t.input do |i|
-            i.prev_out(utxo['txid'], utxo['vout'])
+            i.prev_out(utxo.txid, utxo.vout)
             i.prev_out_script(my_script_pubkey)
-            i.prev_out_value(utxo['value'])
+            i.prev_out_value(utxo.value)
             i.signature_key(@key)
           end
         end

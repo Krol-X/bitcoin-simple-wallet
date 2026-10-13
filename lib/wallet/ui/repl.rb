@@ -24,7 +24,7 @@ module Wallet
           case ask('Выберите пункт')
           when '1' then show_balance
           when '2' then run_send
-          when '3', 'exit', 'quit' then break
+          when '3', 'exit', 'quit', nil then break
           else out.puts presenter.unknown_command
           end
         end

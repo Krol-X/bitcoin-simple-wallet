@@ -9,6 +9,7 @@ require_relative 'bitcoin/openssl3'
 require_relative 'wallet/private_key'
 require_relative 'wallet/api/client'
 require_relative 'wallet/transaction'
+require_relative 'wallet/account'
 
 module Wallet
 end

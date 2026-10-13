@@ -3,16 +3,16 @@
 # скачиваем транзакцию и её prevout'ы через публичный API mempool.space,
 # парсим их гемом и проверяем подписи входов.
 #
-#   ruby test/verify_real_signet_tx.rb 480ac0dceaa9c8448f8da790715f9e4142faa5d49dc26342ce0f118f623ce8c4
-#   ruby test/verify_real_signet_tx.rb <txid1> <txid2> ...
+#   ruby test/bitcoin/verify_real_signet_tx.rb 480ac0dceaa9c8448f8da790715f9e4142faa5d49dc26342ce0f118f623ce8c4
+#   ruby test/bitcoin/verify_real_signet_tx.rb <txid1> <txid2> ...
 #
 # Без аргументов берёт несколько транзакций из верхушки блокчейна signet.
 require 'stringio'
 require 'bitcoin'
 require 'net/http'
 require 'json'
-require_relative '../lib/bitcoin/signet'
-require_relative '../lib/bitcoin/openssl3'
+require_relative '../../lib/bitcoin/signet'
+require_relative '../../lib/bitcoin/openssl3'
 
 Bitcoin.network = :signet
 

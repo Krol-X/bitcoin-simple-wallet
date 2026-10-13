@@ -3,15 +3,15 @@
 #   {без патча, с патчем signet+openssl3} x {текущий Ruby}
 # Сравнивать удобно, запуская скрипт для каждого Ruby:
 #
-#   bash test/gem_spec_matrix.sh /usr/local/bin/ruby          # Ruby 4.0.7
-#   bash test/gem_spec_matrix.sh /usr/bin/ruby                # Ruby 3.3.8
+#   bash test/bitcoin/gem_spec_matrix.sh /usr/local/bin/ruby          # Ruby 4.0.7
+#   bash test/bitcoin/gem_spec_matrix.sh /usr/bin/ruby                # Ruby 3.3.8
 #
 # Гем скачивается в /tmp/bitcoin-ruby-matrix (в воркспейсе не мусорим).
 set -uo pipefail
 
 RUBY="${1:-ruby}"
 WORK="${WORK:-/tmp/bitcoin-ruby-matrix}"
-PATCH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/.." && pwd)"
+PATCH_DIR="$(cd "$(dirname "${BASH_SOURCE[0]}")/../.." && pwd)"
 
 export PATH="$(dirname "$RUBY"):$PATH"
 # libsecp256k1, если он есть в системе — иначе 13 спек просто не смогут запуститься

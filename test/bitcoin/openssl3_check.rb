@@ -1,13 +1,13 @@
 # encoding: utf-8
 # Проверка слоя совместимости с OpenSSL 3 + базовых сценариев подписи.
 #
-#   ruby test/openssl3_check.rb
+#   ruby test/bitcoin/openssl3_check.rb
 #
 # Ожидаемые значения сверены с двумя независимыми реализациями
 # (python-embit и bip_utils) и с BIP32/BIP84 test vectors.
 require 'bitcoin'
-require_relative '../lib/bitcoin/signet'
-require_relative '../lib/bitcoin/openssl3'
+require_relative '../../lib/bitcoin/signet'
+require_relative '../../lib/bitcoin/openssl3'
 
 def check(name)
   res = yield

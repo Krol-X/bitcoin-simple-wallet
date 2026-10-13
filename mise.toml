@@ -1,0 +1,6 @@
+[tools]
+ruby = "4.0.7"
+
+[tasks.deps]
+description = "Установить зависимости"
+run = "bundle install"

@@ -48,6 +48,6 @@ end
 check 'Transaction#confirmed? отражает флаг' do
   base = { txid: 'ab' * 32, version: 2, locktime: 0, size: 222, weight: 561,
            fee: 1000, block_height: 1, block_time: 1 }
-  assert_equal true, Wallet::Dto::Transaction.new(**base, confirmed: true).confirmed?
-  assert_equal false, Wallet::Dto::Transaction.new(**base, confirmed: false).confirmed?
+  assert_equal true, Wallet::Dto::Transactions.new(**base, confirmed: true).confirmed?
+  assert_equal false, Wallet::Dto::Transactions.new(**base, confirmed: false).confirmed?
 end

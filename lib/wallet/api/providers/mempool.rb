@@ -2,21 +2,21 @@
 # docs: https://mempool.space/ru/signet/docs/api/rest
 
 require_relative '../core/http_client'
-require_relative 'addresses'
-require_relative 'transactions'
+require_relative './mempool/account'
+require_relative './mempool/transactions'
 
 module Wallet
   module Api
-    module Mempool
-      class Client < HttpClient
+    module Providers
+      class Mempool < HttpClient
         GATEWAYS = {
           mainnet: 'https://mempool.space/api',
           signet: 'https://mempool.space/signet/api',
           testnet4: 'https://mempool.space/testnet4/api'
         }.freeze
 
-        include Addresses
-        include Transactions
+        include Providers::Mempool::Account
+        include Providers::Mempool::Transactions
 
         def initialize(network: :mainnet)
           super()

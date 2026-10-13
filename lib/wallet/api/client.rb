@@ -1,12 +1,12 @@
 # frozen_string_literal: true
 
 require_relative 'core/network'
-require_relative 'mempool/client'
+require_relative 'providers/mempool'
 
 module Wallet
   module Api
     class Client
-      def initialize(network: :mainnet, provider: Api::Mempool::Client)
+      def initialize(network: :mainnet, provider: Providers::Mempool)
         Network.validate!(network)
         @provider = provider.new(network: network)
       end

@@ -27,11 +27,11 @@ module Wallet
 
       def build_parser
         OptionParser.new do |o|
-          o.banner = 'Usage: app.rb [-a | -s ADDRESS AMOUNT]'
+          o.banner = 'Usage: bin/cli [-a | -s ADDRESS AMOUNT]'
 
           o.on('-a', '--account', 'Показать адрес и баланс') { @action = :account }
           o.on('-s', '--send', 'Отправить <address> <amount> BTC') { @action = :send }
-          o.on('-h', '--help') do
+          o.on('-h', '--help', 'Помощь') do
             puts o
             exit
           end

@@ -29,7 +29,7 @@ module Wallet
           end
 
           def transaction(json)
-            Dto::Transactions.new(
+            Dto::Transaction.new(
               txid: json.fetch('txid'),
               version: json['version'],
               locktime: json['locktime'],

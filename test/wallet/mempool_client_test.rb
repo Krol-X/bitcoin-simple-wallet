@@ -52,12 +52,12 @@ check 'get_utxo: возвращает массив DTO, confirmed различа
   end
 end
 
-check 'get_tx: маппит транзакцию' do
+check 'get_transaction: маппит транзакцию' do
   txid = 'cc' * 32
   url = "#{SIGNET_GW}/tx/#{txid}"
   fake = FakeHttp.new({ [:get, url] => [200, TX_BODY] })
   with_http_stub(fake) do
-    t = C.new(network: :signet).get_tx(txid)
+    t = C.new(network: :signet).get_transaction(txid)
     assert_equal txid, t.txid
     assert_equal 500, t.fee
     assert_equal true, t.confirmed?

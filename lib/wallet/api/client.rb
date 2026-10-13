@@ -1,23 +1,26 @@
 # frozen_string_literal: true
 
-require_relative 'core/network'
 require_relative 'providers/mempool'
 
 module Wallet
   module Api
     class Client
+      SUPPORTED_NETWORKS = %i[mainnet signet testnet4].freeze
+
       def initialize(network: :mainnet, provider: Providers::Mempool)
-        Network.validate!(network)
+        validate!(network)
         @provider = provider.new(network: network)
       end
 
-      def get_address(...) = @provider.get_address(...)
+      def_delegators :@provider, :get_address, :get_utxo, # account
+                     :get_transaction, :broadcast         # transactions
 
-      def get_utxo(...) = @provider.get_utxo(...)
+      private
 
-      def get_tx(...) = @provider.get_tx(...)
-
-      def broadcast(...) = @provider.broadcast(...)
+      def validate!(name)
+        return name if SUPPORTED_NETWORKS.include?(name)
+        raise ArgumentError, "unknown network: #{name} (supported: #{SUPPORTED_NETWORKS.join(', ')})"
+      end
     end
   end
 end

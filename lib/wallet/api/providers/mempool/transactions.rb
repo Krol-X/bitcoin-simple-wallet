@@ -7,7 +7,7 @@ module Wallet
     module Providers
       module Mempool
         module Transactions
-          def get_tx(txid)
+          def get_transaction(txid)
             Mappers.transaction(request { |http| http.get "#{@gateway}/tx/#{txid}" })
           end
 

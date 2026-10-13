@@ -21,8 +21,8 @@ class FakeProvider
     [:utxo_dto]
   end
 
-  def get_tx(txid)
-    @calls << [:get_tx, txid]
+  def get_transaction(txid)
+    @calls << [:get_transaction, txid]
     :tx_dto
   end
 
@@ -36,7 +36,7 @@ check 'делегирует все методы провайдеру с теми
   client = Wallet::Api::Client.new(network: :signet, provider: FakeProvider)
   assert_equal :address_dto, client.get_address('a')
   assert_equal [:utxo_dto], client.get_utxo('a')
-  assert_equal :tx_dto, client.get_tx('t')
+  assert_equal :tx_dto, client.get_transaction('t')
   assert_equal :txid, client.broadcast('hex')
 end
 

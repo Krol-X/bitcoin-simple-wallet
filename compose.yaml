@@ -1,0 +1,8 @@
+services:
+  wallet:
+    build: .
+    image: sbtc-wallet
+    volumes:
+      - ./storage:/app/storage
+    stdin_open: true
+    tty: true

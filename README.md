@@ -20,3 +20,22 @@ bundle install            # установка зависимостей
 ./bin/cli [-s] --send <address> <amount>  # : отправить <amount> BTC на <address>
 ./bin/cli [-h] --help     # : помощь
 ```
+
+## Docker
+
+```bash
+docker build -t sbtc-wallet .
+
+# интерактивный режим (REPL)
+docker run --rm -it -v ./storage:/app/storage sbtc-wallet
+
+# адрес и баланс
+docker run --rm -v ./storage:/app/storage sbtc-wallet -a
+
+# отправить <amount> BTC на <address>
+docker run --rm -v ./storage:/app/storage sbtc-wallet -s <address> <amount>
+```
+
+Каталог `storage/` исключён из образа (`.dockerignore`), ключ
+`storage/wallet.key` генерируется при первом запуске — монтируйте
+`-v ./storage:/app/storage`, чтобы ключ не терялся вместе с контейнером.

@@ -16,7 +16,7 @@
 bundle install            # установка зависимостей
 
 ./bin/cli                 # интерактивный режим (REPL)
-./bin/cli -a              # адрес и баланс
-./bin/cli -s <address> <amount>   # отправить <amount> BTC на <address>
-./bin/cli -h              # помощь
+./bin/cli [-a] --account  # : адрес и баланс
+./bin/cli [-s] --send <address> <amount>  # : отправить <amount> BTC на <address>
+./bin/cli [-h] --help     # : помощь
 ```

@@ -2,6 +2,8 @@
 
 source "https://rubygems.org"
 
+ruby ">= 3.2"
+
 # gem "rails"
 
 gem "bitcoin-ruby", "~> 0.0.20"

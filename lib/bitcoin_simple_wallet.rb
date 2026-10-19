@@ -1,5 +1,6 @@
 # frozen_string_literal: true
 
+require "bitcoin"
 require "zeitwerk"
 require_relative "bitcoin_simple_wallet/version"
 

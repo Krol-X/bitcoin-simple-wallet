@@ -8,7 +8,7 @@ Gem::Specification.new do |spec|
   spec.authors = ["Alex Krol"]
   spec.email = ["krolmail@list.ru"]
 
-  spec.summary = "Bitcoin simple wallet"
+  spec.summary = "A minimal Bitcoin signet wallet for the command line, with one-shot commands and an interactive mode"
   spec.homepage = "https://github.com/Krol-X/bitcoin-simple-wallet"
   spec.license = "MIT"
   spec.required_ruby_version = ">= 3.2.0"
@@ -27,7 +27,6 @@ Gem::Specification.new do |spec|
   spec.executables = spec.files.grep(%r{\Aexe/}) { |f| File.basename(f) }
   spec.require_paths = ["lib"]
 
-  spec.add_dependency "bitcoin", "~> 0.2"
   spec.add_dependency "bitcoinrb", "~> 1.15"
-  spec.add_dependency "zeitwerk",  "~> 2.8"
+  spec.add_dependency "zeitwerk", "~> 2.8"
 end

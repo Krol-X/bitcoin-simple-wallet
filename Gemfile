@@ -2,10 +2,12 @@
 
 source "https://rubygems.org"
 
-ruby ">= 3.2"
+# Specify your gem's dependencies in bitcoin_simple_wallet.gemspec
+gemspec
 
-# gem "rails"
+gem "irb"
+gem "rake", "~> 13.0"
 
-gem "bitcoin-ruby", "~> 0.0.20"
+gem "rspec", "~> 3.0"
 
-gem "http", "~> 6.0"
+gem "rubocop", "~> 1.21"

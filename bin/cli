@@ -10,8 +10,8 @@ NETWORK = :signet
 
 arguments = Wallet::UI::Arguments.parse(ARGV)
 
-key = Wallet::PrivateKey.new
 client = Wallet::Api::Client.new(network: NETWORK)
+key = Wallet::PrivateKey.new
 account = Wallet::Account.new(key: key, client: client, network: NETWORK)
 
 status =

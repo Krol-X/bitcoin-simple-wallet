@@ -1,10 +1,13 @@
 # frozen_string_literal: true
 
-require_relative 'providers/mempool'
+require 'forwardable'
+require_relative 'providers/mempool/client'
 
 module Wallet
   module Api
     class Client
+      extend Forwardable
+
       SUPPORTED_NETWORKS = %i[mainnet signet testnet4].freeze
 
       def initialize(network: :mainnet, provider: Providers::Mempool)

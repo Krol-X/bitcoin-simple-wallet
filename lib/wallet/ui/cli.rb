@@ -25,11 +25,8 @@ module Wallet
         else
           out.puts presenter.unknown_command
         end
-
-        0
       rescue StandardError => e
         out.puts presenter.error(e.message)
-        1
       end
     end
   end
